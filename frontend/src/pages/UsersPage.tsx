@@ -124,14 +124,22 @@ export default function UsersPage() {
         }
     }
 
+    const parseDate = (str) => {
+        const [datePart, timePart] = str.split(' ');
+        const [day, month, year] = datePart.split('-').map(Number);
+        const [hours, minutes] = timePart.split(':').map(Number);
+
+        return new Date(year, month - 1, day, hours, minutes);
+    }
+
     const sortedUsers = useMemo(() => {
         return [...users].sort((a, b) => {
             let aVal = a[sortField]
             let bVal = b[sortField]
 
             if (sortField === 'created_at') {
-                aVal = new Date(aVal as string).getTime()
-                bVal = new Date(bVal as string).getTime()
+                aVal = parseDate(aVal as string).getTime()
+                bVal = parseDate(bVal as string).getTime()
             }
 
             if (typeof aVal === 'boolean') {
