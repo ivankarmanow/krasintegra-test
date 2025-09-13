@@ -2,7 +2,6 @@ import datetime as dt
 from typing import Annotated, Sequence
 
 from fastapi import APIRouter, Depends
-
 from src.testovoe.api.user.response import APIResponse
 from src.testovoe.exception.not_enough_rights_exception import NotEnoughRightsException
 from src.testovoe.main.dependencies import check_auth

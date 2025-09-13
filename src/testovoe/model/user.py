@@ -1,9 +1,9 @@
 import datetime as dt
 from typing import Optional
 
-from pydantic import BaseModel, ConfigDict, field_serializer, Field
-
+from pydantic import BaseModel, ConfigDict, field_serializer
 from src.testovoe.db.user import GenderEnum
+
 
 class UserBase(BaseModel):
     name: str
@@ -11,9 +11,11 @@ class UserBase(BaseModel):
     gender: GenderEnum
     is_admin: bool = False
 
+
 class UserIn(UserBase):
     avatar_base64: Optional[str]
     password: str
+
 
 class User(UserBase):
     id: int

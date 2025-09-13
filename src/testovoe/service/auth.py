@@ -2,7 +2,6 @@ import datetime as dt
 
 from passlib.context import CryptContext
 from sqlalchemy import select
-
 from src.testovoe.db import User, Token
 from src.testovoe.exception.invalid_token import InvalidTokenException
 from src.testovoe.exception.token_expired import TokenExpiredException

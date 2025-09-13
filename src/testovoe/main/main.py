@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
-from .routers import init_routers
 from .dependencies import get_config
+from .routers import init_routers
 
 
 def create_app():

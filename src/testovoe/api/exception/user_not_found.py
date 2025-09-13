@@ -1,7 +1,7 @@
 from fastapi.responses import JSONResponse
+from src.testovoe.exception import UserNotFoundException
 from starlette.requests import Request
 
-from src.testovoe.exception import UserNotFoundException
 from .response import ErrorResponse
 
 

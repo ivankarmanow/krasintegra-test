@@ -4,7 +4,6 @@ from typing import Annotated
 from fastapi import Depends
 from sqlalchemy import select, func, cast, Date, extract
 from sqlalchemy.orm import joinedload
-
 from src.testovoe.db import User as UserDB
 from src.testovoe.exception import UserNotFoundException
 from src.testovoe.main.dependencies import DbSession
@@ -14,7 +13,9 @@ from src.testovoe.service.file import FileService
 
 
 class UserService:
-    def __init__(self, session: DbSession, auth: Annotated[AuthService, Depends()], file: Annotated[FileService, Depends()]):
+    def __init__(
+        self, session: DbSession, auth: Annotated[AuthService, Depends()], file: Annotated[FileService, Depends()]
+        ):
         self.session = session
         self.auth = auth
         self.file = file
@@ -98,7 +99,6 @@ class UserService:
                 setattr(old_user, key, None)
         self.session.add(old_user)
         self.session.commit()
-
 
     def group_by_minutes(self, day: dt.date, hour: int) -> dict[str, int]:
         stmt = (

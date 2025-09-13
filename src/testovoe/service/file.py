@@ -4,7 +4,6 @@ import uuid
 from typing import Annotated
 
 from fastapi import Depends
-
 from src.testovoe.main.config import Config
 from src.testovoe.main.dependencies import get_config
 
