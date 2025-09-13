@@ -7,7 +7,7 @@ class Config(BaseSettings):
     upload_dir: DirectoryPath
     root_username: str
     root_password: str
-    nginx_root_path: str
+    nginx_proxy_prefix: str
     static_files: str
 
-    model_config = SettingsConfigDict(env_file=".env")
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
