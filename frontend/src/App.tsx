@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage'
 import UsersPage from './pages/UsersPage'
 import ChartPage from './pages/ChartPage'
 import {getMe, logout} from './lib/api'
+import reactLogo from "./assets/react.svg"
 
 function Navbar() {
     const [me, setMe] = useState<Awaited<ReturnType<typeof getMe>> | null>(null)
@@ -17,7 +18,7 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg bg-body-tertiary mb-4">
             <div className="container">
                 <Link className="navbar-brand" to="/">
-                    <img src="/src/assets/react.svg" alt="Главная" className="logo"/>
+                    <img src={reactLogo} alt="Главная" className="logo"/>
                 </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
