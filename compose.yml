@@ -13,7 +13,7 @@ services:
     build: .
     restart: always
     depends_on:
-      - db
+      - migrate
     volumes:
       - /var/www/krasintegra/upload:/app/upload
     env_file:
@@ -33,7 +33,7 @@ services:
     command: python -m src.testovoe.main.create_root_user
     env_file: .env
     depends_on:
-      - db
+      - migrate
 
 volumes:
   db_data:
