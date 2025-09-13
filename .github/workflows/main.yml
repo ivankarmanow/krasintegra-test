@@ -1,0 +1,39 @@
+name: Deploy to server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy via SSH
+        run: |
+          ssh -o StrictHostKeyChecking=no ivan@91.224.87.148 << 'EOF'
+          set -e
+
+          echo "🔹 Git pull..."
+          cd /home/ivan/krasintegra/
+          git pull
+
+          echo "🔹 Docker..."
+          sudo docker compose up -d --build
+
+          echo "🔹 Npm..."
+          cd frontend
+          npm install
+          npm run build
+
+          echo "✅ Deployed!"
+          EOF
