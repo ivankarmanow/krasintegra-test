@@ -124,10 +124,21 @@ export default function UsersPage() {
         }
     }
 
-    const parseDate = (str) => {
+    const parseDate = (str: string): Date => {
         const [datePart, timePart] = str.split(' ');
+        if (!datePart || !timePart) {
+            throw new Error('Неверный формат строки');
+        }
+
         const [day, month, year] = datePart.split('-').map(Number);
         const [hours, minutes] = timePart.split(':').map(Number);
+
+        if (
+            isNaN(day) || isNaN(month) || isNaN(year) ||
+            isNaN(hours) || isNaN(minutes)
+        ) {
+            throw new Error('Неверные числовые значения в дате или времени');
+        }
 
         return new Date(year, month - 1, day, hours, minutes);
     }
