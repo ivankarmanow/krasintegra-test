@@ -26,7 +26,7 @@ function Navbar() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav me-auto">
-                        <li className="nav-item"><Link className="nav-link" to="/users">Пользователи</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/users">Юзеры</Link></li>
                         <li className="nav-item"><Link className="nav-link" to="/chart">График</Link></li>
                     </ul>
                     <div className="d-flex align-items-center gap-2">

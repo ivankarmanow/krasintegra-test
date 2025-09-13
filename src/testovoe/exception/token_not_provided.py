@@ -1,3 +1,3 @@
 class TokenNotProvidedException(Exception):
     def __str__(self):
-        return f"Token not provided, but excepted"
+        return f"Token was not provided, but excepted"
