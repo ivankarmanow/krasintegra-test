@@ -27,4 +27,4 @@ RUN mkdir -p ./upload
 
 ENV PYTHONUNBUFFERED=1
 
-CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "src.testovoe:create_app()", "--bind", "0.0.0.0:8012", "--root-path"]
+CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "src.testovoe:create_app()", "--bind", "0.0.0.0:8012"]
