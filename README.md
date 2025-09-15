@@ -12,8 +12,8 @@
 
 Стек:
 - Backend: Python, FastAPI, PostgreSQL, SQLAlchemy ORM, Poetry
-- Frontend: React, Typescript, Vite, React Router, Axios
-- Deploy: Docker, Docker Compose, Gunicorn, Nginx
+- Frontend: React, Typescript, Vite, React Router, Axios, Bootstrap
+- Deploy: Docker, Docker Compose, Gunicorn, Nginx, Github Actions (CI/CD)
 
 ### Запуск
 
@@ -30,3 +30,5 @@
 7. В файлах `frontend/.env.local` и `frontend/.env.production` указаны адреса бэкенда, используемые при локальном запуске и при сборке
 8. Можно запустить фронтенд локально командой `npm run dev` из директории `frontend`.
 9. Либо запустить сборку командой `npm run build` и хостить отдельно (например, через nginx).
+
+Развернутая версия для тестирования доступна по адресу https://krasintegra.karmanow.ru
