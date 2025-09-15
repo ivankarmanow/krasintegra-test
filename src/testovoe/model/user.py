@@ -1,13 +1,13 @@
 import datetime as dt
 from typing import Optional
 
-from pydantic import BaseModel, ConfigDict, field_serializer
+from pydantic import BaseModel, ConfigDict, field_serializer, Field
 from src.testovoe.db.user import GenderEnum
 
 
 class UserBase(BaseModel):
     name: str
-    birth_year: int
+    birth_year: int = Field(ge=1900, le=2025)
     gender: GenderEnum
     is_admin: bool = False
 

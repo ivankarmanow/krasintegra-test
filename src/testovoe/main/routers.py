@@ -1,16 +1,21 @@
 from fastapi import FastAPI
+from fastapi.exceptions import RequestValidationError
 from fastapi.staticfiles import StaticFiles
+from pydantic import ValidationError
+from starlette.middleware.cors import CORSMiddleware
+
 from src.testovoe.api import auth, user
 from src.testovoe.api.exception.auth import auth_error_handler
+from src.testovoe.api.exception.default import base_error_handler
 from src.testovoe.api.exception.password import incorrect_password_handler
 from src.testovoe.api.exception.user_not_found import user_not_found_handler
+from src.testovoe.api.exception.validation import validation_error_handler
 from src.testovoe.exception import UserNotFoundException, UsernameOrPasswordIncorrectException
 from src.testovoe.exception.invalid_token import InvalidTokenException
 from src.testovoe.exception.not_enough_rights_exception import NotEnoughRightsException
 from src.testovoe.exception.token_expired import TokenExpiredException
 from src.testovoe.exception.token_not_provided import TokenNotProvidedException
 from src.testovoe.main.dependencies import get_config
-from starlette.middleware.cors import CORSMiddleware
 
 
 def init_routers(app: FastAPI):
@@ -34,3 +39,6 @@ def init_routers(app: FastAPI):
     app.add_exception_handler(TokenExpiredException, auth_error_handler)
     app.add_exception_handler(TokenNotProvidedException, auth_error_handler)
     app.add_exception_handler(NotEnoughRightsException, auth_error_handler)
+    app.add_exception_handler(ValidationError, validation_error_handler)
+    app.add_exception_handler(RequestValidationError, validation_error_handler)
+    app.add_exception_handler(Exception, base_error_handler)

@@ -2,7 +2,7 @@ from datetime import datetime
 from enum import StrEnum
 from typing import Optional, TYPE_CHECKING
 
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, CheckConstraint
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 
 from .base import Base
@@ -21,7 +21,7 @@ class User(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(unique=True)
-    birth_year: Mapped[int]
+    birth_year: Mapped[int] = mapped_column(CheckConstraint("year BETWEEN 1900 AND 2025"))
     gender: Mapped[GenderEnum]
     avatar_path: Mapped[Optional[str]]
     created_at: Mapped[datetime] = mapped_column(default=datetime.now)

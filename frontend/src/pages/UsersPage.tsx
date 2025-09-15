@@ -54,7 +54,7 @@ function UserForm({initial, onSubmit, onCancel, isEdit = false}: {
                 </div>
                 <div>
                     <label className="form-label">Год рождения</label>
-                    <input type="number" className="form-control" value={form.birth_year}
+                    <input type="number" className="form-control" value={form.birth_year} min="1900" max="2025"
                            onChange={e => setForm({...form, birth_year: Number(e.target.value)})} required/>
                 </div>
                 <div>
