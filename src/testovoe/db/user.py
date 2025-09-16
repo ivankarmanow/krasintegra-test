@@ -29,5 +29,5 @@ class User(Base):
     is_admin: Mapped[bool] = mapped_column(default=False)
     password: Mapped[str]
 
-    tokens: Mapped[list["Token"]] = relationship(back_populates="user")
+    tokens: Mapped[list["Token"]] = relationship(back_populates="user", cascade="all, delete-orphan")
     created_by: Mapped["User"] = relationship(remote_side=[id])

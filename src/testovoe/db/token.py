@@ -15,7 +15,7 @@ class Token(Base):
     __tablename__ = "token"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id", ondelete="CASCADE"))
     token: Mapped[uuid.UUID] = mapped_column(default=uuid.uuid4)
     created_at: Mapped[datetime] = mapped_column(default=datetime.now)
     expires_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now() + timedelta(days=30))
